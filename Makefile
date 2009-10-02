@@ -1,15 +1,15 @@
-# dmenu - dynamic menu
+# fmenu - fast menu
 # See LICENSE file for copyright and license details.
 
 include config.mk
 
-SRC = dmenu.c
+SRC = fmenu.c
 OBJ = ${SRC:.c=.o}
 
-all: options dmenu
+all: options fmenu
 
 options:
-	@echo dmenu build options:
+	@echo fmenu build options:
 	@echo "CFLAGS   = ${CFLAGS}"
 	@echo "LDFLAGS  = ${LDFLAGS}"
 	@echo "CC       = ${CC}"
@@ -20,21 +20,21 @@ options:
 
 ${OBJ}: config.h config.mk
 
-dmenu: ${OBJ}
+fmenu: ${OBJ}
 	@echo CC -o $@
 	@${CC} -o $@ ${OBJ} ${LDFLAGS}
 
 clean:
 	@echo cleaning
-	@rm -f dmenu ${OBJ} dmenu-${VERSION}.tar.gz
+	@rm -f fmenu ${OBJ} fmenu-${VERSION}.tar.gz
 
 dist: clean
 	@echo creating dist tarball
-	@mkdir -p dmenu-${VERSION}
-	@cp -R LICENSE Makefile README config.mk dmenu.1 config.h dmenu_path dmenu_run ${SRC} dmenu-${VERSION}
-	@tar -cf dmenu-${VERSION}.tar dmenu-${VERSION}
-	@gzip dmenu-${VERSION}.tar
-	@rm -rf dmenu-${VERSION}
+	@mkdir -p fmenu-${VERSION}
+	@cp -R LICENSE Makefile README config.mk dmenu.1 config.h dmenu_path dmenu_run ${SRC} fmenu-${VERSION}
+	@tar -cf fmenu-${VERSION}.tar fmenu-${VERSION}
+	@gzip fmenu-${VERSION}.tar
+	@rm -rf fmenu-${VERSION}
 
 install: all
 	@echo installing executable file to ${DESTDIR}${PREFIX}/bin

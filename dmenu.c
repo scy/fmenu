@@ -763,14 +763,14 @@ main(int argc, char *argv[]) {
 			if(++i < argc) selfgcolor = argv[i];
 		}
 		else if(!strcmp(argv[i], "-v"))
-			eprint("dmenu-"VERSION", © 2006-2008 dmenu engineers, see LICENSE for details\n");
+			eprint("fmenu-"VERSION", © 2006-2009 fmenu and dmenu engineers, see LICENSE for details\n");
 		else
-			eprint("usage: dmenu [-i] [-b] [-l <lines>] [-fn <font>] [-nb <color>] [-nf <color>]\n"
+			eprint("usage: fmenu [-i] [-b] [-l <lines>] [-fn <font>] [-nb <color>] [-nf <color>]\n"
 			       "             [-p <prompt>] [-sb <color>] [-sf <color>] [-v]\n");
 	if(!setlocale(LC_CTYPE, "") || !XSupportsLocale())
 		fprintf(stderr, "warning: no locale support\n");
 	if(!(dpy = XOpenDisplay(NULL)))
-		eprint("dmenu: cannot open display\n");
+		eprint("fmenu: cannot open display\n");
 	screen = DefaultScreen(dpy);
 	root = RootWindow(dpy, screen);
 
