@@ -1,0 +1,39 @@
+h1. fmenu — fast menu
+
+fmenu is a generic and efficient menu for X11.
+
+
+h2. History
+
+fmenu is based on the "suckless project’s":http://suckless.org/
+"dmenu":http://tools.suckless.org/dmenu. However, dmenu seeks to be as minimal
+as possible and therefore does not include any features but the most basic
+ones.
+
+We like the suckless community and agree with their decision, but some people
+may want to use things like an alternative matching algorithm or a vertical
+layout. In the past, this was only possible by manually patching your dmenu
+version, which is not very convenient. Therefore, we decided to fork dmenu and
+create a version that is not quite as tiny, but includes all the features the
+community finds necessary.
+
+
+h2. Requirements
+
+In order to build fmenu you need the Xlib header files.
+
+
+h2. Installation
+
+Edit config.mk to match your local setup (fmenu is installed into the /usr/local
+namespace by default).
+
+Afterwards enter the following command to build and install fmenu (if necessary
+as root):
+
+bc. make clean install
+
+
+h2. Running fmenu
+
+See the man page for details.
