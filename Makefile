@@ -1,15 +1,15 @@
-# dmenu - dynamic menu
+# fmenu - fast menu
 # See LICENSE file for copyright and license details.
 
 include config.mk
 
-SRC = dmenu.c
+SRC = fmenu.c
 OBJ = ${SRC:.c=.o}
 
-all: options dmenu
+all: options fmenu
 
 options:
-	@echo dmenu build options:
+	@echo fmenu build options:
 	@echo "CFLAGS   = ${CFLAGS}"
 	@echo "LDFLAGS  = ${LDFLAGS}"
 	@echo "CC       = ${CC}"
@@ -20,39 +20,39 @@ options:
 
 ${OBJ}: config.h config.mk
 
-dmenu: ${OBJ}
+fmenu: ${OBJ}
 	@echo CC -o $@
 	@${CC} -o $@ ${OBJ} ${LDFLAGS}
 
 clean:
 	@echo cleaning
-	@rm -f dmenu ${OBJ} dmenu-${VERSION}.tar.gz
+	@rm -f fmenu ${OBJ} fmenu-${VERSION}.tar.gz
 
 dist: clean
 	@echo creating dist tarball
-	@mkdir -p dmenu-${VERSION}
-	@cp -R LICENSE Makefile README config.mk dmenu.1 config.h dmenu_path dmenu_run ${SRC} dmenu-${VERSION}
-	@tar -cf dmenu-${VERSION}.tar dmenu-${VERSION}
-	@gzip dmenu-${VERSION}.tar
-	@rm -rf dmenu-${VERSION}
+	@mkdir -p fmenu-${VERSION}
+	@cp -R LICENSE Makefile README config.mk fmenu.1 config.h fmenu_path fmenu_run ${SRC} fmenu-${VERSION}
+	@tar -cf fmenu-${VERSION}.tar fmenu-${VERSION}
+	@gzip fmenu-${VERSION}.tar
+	@rm -rf fmenu-${VERSION}
 
 install: all
 	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
 	@mkdir -p ${DESTDIR}${PREFIX}/bin
-	@cp -f dmenu dmenu_path dmenu_run ${DESTDIR}${PREFIX}/bin
-	@chmod 755 ${DESTDIR}${PREFIX}/bin/dmenu
-	@chmod 755 ${DESTDIR}${PREFIX}/bin/dmenu_path
-	@chmod 755 ${DESTDIR}${PREFIX}/bin/dmenu_run
+	@cp -f fmenu fmenu_path fmenu_run ${DESTDIR}${PREFIX}/bin
+	@chmod 755 ${DESTDIR}${PREFIX}/bin/fmenu
+	@chmod 755 ${DESTDIR}${PREFIX}/bin/fmenu_path
+	@chmod 755 ${DESTDIR}${PREFIX}/bin/fmenu_run
 	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man1
 	@mkdir -p ${DESTDIR}${MANPREFIX}/man1
-	@sed "s/VERSION/${VERSION}/g" < dmenu.1 > ${DESTDIR}${MANPREFIX}/man1/dmenu.1
-	@chmod 644 ${DESTDIR}${MANPREFIX}/man1/dmenu.1
+	@sed "s/VERSION/${VERSION}/g" < fmenu.1 > ${DESTDIR}${MANPREFIX}/man1/fmenu.1
+	@chmod 644 ${DESTDIR}${MANPREFIX}/man1/fmenu.1
 
 uninstall:
 	@echo removing executable file from ${DESTDIR}${PREFIX}/bin
-	@rm -f ${DESTDIR}${PREFIX}/bin/dmenu ${DESTDIR}${PREFIX}/bin/dmenu_path
-	@rm -f ${DESTDIR}${PREFIX}/bin/dmenu ${DESTDIR}${PREFIX}/bin/dmenu_run
+	@rm -f ${DESTDIR}${PREFIX}/bin/fmenu ${DESTDIR}${PREFIX}/bin/fmenu_path
+	@rm -f ${DESTDIR}${PREFIX}/bin/fmenu ${DESTDIR}${PREFIX}/bin/fmenu_run
 	@echo removing manual page from ${DESTDIR}${MANPREFIX}/man1
-	@rm -f ${DESTDIR}${MANPREFIX}/man1/dmenu.1
+	@rm -f ${DESTDIR}${MANPREFIX}/man1/fmenu.1
 
 .PHONY: all options clean dist install uninstall

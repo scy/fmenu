@@ -1,0 +1,2 @@
+#!/bin/sh
+exe=`fmenu_path | fmenu ${1+"$@"}` && exec $exe
