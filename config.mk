@@ -1,5 +1,5 @@
-# fmenu version
-VERSION = 0.1
+# dmenu version
+VERSION = 4.0-vertical
 
 # Customize below to fit your system
 
