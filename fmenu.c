@@ -706,6 +706,13 @@ setup(Bool topbar) {
 		promptw = mw / 5;
 	text[0] = 0;
 	match(text);
+	// Set window class.
+	XClassHint *ch = XAllocClassHint();
+	ch->res_name = "fmenu";
+	ch->res_class = "fmenu";
+	XSetClassHint(dpy, win, ch);
+	XFree(ch);
+	// Map window.
 	XMapRaised(dpy, win);
 }
 
