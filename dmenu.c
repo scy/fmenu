@@ -324,6 +324,13 @@ kpress(XKeyEvent * e) {
 		else if(ksym >= XK_KP_0 && ksym <= XK_KP_9)
 			ksym = (ksym - XK_KP_0) + XK_0;
 	}
+	/* check for Shift-Insert before the IsMiscFunctionKey check */
+	if(ksym == XK_Insert && e->state & ShiftMask) {
+		// TODO: This is where the rather clumsy X11 selection mechanism should
+		// be used to access the clipboard data. xclip's xclib.c might be the
+		// most minimal solution to it; anybody have a better suggestion?
+		// See: http://xclip.svn.sourceforge.net/viewvc/xclip/trunk/
+	}
 	if(IsFunctionKey(ksym) || IsKeypadKey(ksym)
 	   || IsMiscFunctionKey(ksym) || IsPFKey(ksym)
 	   || IsPrivateKeypadKey(ksym))
