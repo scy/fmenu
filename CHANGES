@@ -1,0 +1,6 @@
+0.1  -  2009-10-03
+ * Take dmenu 4.0,
+ * add meillo's vertical patch
+ * rename the project to fmenu
+ * update manpage and readme
+ * and release!
