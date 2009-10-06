@@ -1,6 +1,7 @@
 0.2  -  working on it...
  * set window class "fmenu"
  * config.mk changes suggested by Gentoo
+ * Shift-Return may also return an empty string
 
 
 0.1  -  2009-10-03
