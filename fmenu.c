@@ -507,7 +507,7 @@ kpress(XKeyEvent * e) {
 		calcoffsets();
 		break;
 	case XK_Return:
-		if((e->state & ShiftMask) && *text)
+		if(e->state & ShiftMask)
 			fprintf(stdout, "%s", text);
 		else if(sel)
 			fprintf(stdout, "%s", sel->text);
